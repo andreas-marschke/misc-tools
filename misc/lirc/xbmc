@@ -1,0 +1,93 @@
+begin xbmc
+      begin 
+	prog = irxevent
+	button = Up
+	config = Key Up CurrentWindow
+      end 
+      begin 
+	prog = irxevent
+	button = Down
+	config = Key Down CurrentWindow
+      end 
+      begin 
+	prog = irxevent
+	button = Left
+	config = Key Left CurrentWindow
+      end 
+      begin 
+	prog = irxevent
+	button = Right
+	config = Key Right CurrentWindow
+      end 
+      begin 
+	prog = irxevent
+	button = Back/Exit
+	config = Key BackSpace CurrentWindow
+      end 
+      begin 
+	prog = irxevent
+	button = OK
+	config = Key Return CurrentWindow
+      end 
+      begin 
+	prog = irxevent
+	button = Pause
+	config = Key space CurrentWindow
+      end 
+      begin 
+	prog = irxevent
+	button = Play
+	config = Key space CurrentWindow
+      end 
+      begin 
+	prog = irxevent
+	button = Rewind
+	config = Key Left CurrentWindow
+      end 
+      begin 
+	prog = irxevent
+	button = Forward
+	config = Key Right CurrentWindow
+      end 
+      begin 
+	prog = irxevent
+	button = Power
+	config = Key s CurrentWindow
+      end 
+      begin 
+	prog = irxevent
+	button = Menu/i
+	config = Key i CurrentWindow
+      end 
+      begin 
+	prog = irxevent
+	button = Vol+
+	config = Key KP_Add CurrentWindow
+      end 
+      begin 
+	prog = irxevent
+	button = Vol- 
+	config = Key KP_Subtract CurrentWindow
+      end 
+      begin 
+	prog = irxevent
+	button = Go
+	config = Key Escape CurrentWindow
+      end 
+      begin 
+	prog = irxevent
+	button = Blue
+	config = Key z CurrentWindow
+      end 
+      begin 
+	prog = irxevent
+	button = Red
+	config = Key a CurrentWindow
+      end 
+      begin 
+	prog = irxevent
+	button = Prev.Ch
+	config = Key Tab CurrentWindow
+      end 
+
+end xbmc

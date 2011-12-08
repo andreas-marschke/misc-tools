@@ -1,0 +1,67 @@
+<SONY_ERICSSON_REMOTE_CONTROL_CONFIGURATION VERSION="1.0">
+  <KEYMAP>
+    <KEY_1> <!-- Back in view = BackSpace-->
+      <ACTION>
+        <KEYBOARD MODIFIERS="00" USAGEID="2A"/>
+      </ACTION>
+    </KEY_1>
+    <KEY_2> <!-- Volume Up = Arrow Up -->
+      <ACTION>
+        <KEYBOARD MODIFIERS="00" USAGEID="52"/>
+      </ACTION>
+    </KEY_2>
+    <KEY_3> <!-- Fullscreen = Escape -->
+      <ACTION>
+        <KEYBOARD MODIFIERS="00" USAGEID="29"/>
+      </ACTION>
+    </KEY_3>
+    <KEY_4>  <!-- Previous = X -->
+      <ACTION>
+        <KEYBOARD MODIFIERS="00" USAGEID="1B"/>
+      </ACTION>
+    </KEY_4>
+    <KEY_5>  <!-- Play/Pause = Space  -->
+      <ACTION>
+        <KEYBOARD MODIFIERS="00" USAGEID="2C"/>
+      </ACTION>
+    </KEY_5>
+    <KEY_6>  <!-- Next = C -->
+      <ACTION>
+        <KEYBOARD MODIFIERS="00" USAGEID="06"/>
+      </ACTION>
+    </KEY_6>
+    <KEY_7>  <!-- Fast Backward = Left Arrow -->
+      <ACTION>
+        <KEYBOARD MODIFIERS="00" USAGEID="50"/>
+      </ACTION>
+    </KEY_7>
+    <KEY_8>  <!-- Volume Down = Down Arrow -->
+      <ACTION>
+        <KEYBOARD MODIFIERS="00" USAGEID="51"/>
+      </ACTION>
+    </KEY_8>
+    <KEY_9>  <!-- Fast FastForward = Right Arrow -->
+      <ACTION>
+        <KEYBOARD MODIFIERS="00" USAGEID="4F"/>
+      </ACTION>
+    </KEY_9>
+    <KEY_0>  <!-- Fast FastForward = Right Arrow -->
+      <ACTION>
+        <KEYBOARD MODIFIERS="00" USAGEID="28"/>
+      </ACTION>
+    </KEY_0>
+
+<!--
+    <KEY_VOL_UP>
+      <ACTION>
+        <KEYBOARD MODIFIERS="01" USAGEID="52"/>
+      </ACTION>
+    </KEY_VOL_UP>
+    <KEY_VOL_DOWN>
+      <ACTION>
+        <KEYBOARD MODIFIERS="01" USAGEID="51"/>
+      </ACTION>
+    </KEY_VOL_DOWN>
+-->
+  </KEYMAP>
+</SONY_ERICSSON_REMOTE_CONTROL_CONFIGURATION>

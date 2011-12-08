@@ -1,0 +1,12 @@
+DESCRIPTION
+
+	This example shows you how to use generic built-in signals and slots
+	with Qyoto.
+
+AUTHOR 
+       
+       Andreas Marschke <xxtjaxx@gmail.com>
+
+LICENSE
+	
+	GPLv2

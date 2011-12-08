@@ -1,0 +1,10 @@
+This files are small helpers while building:
+     (a) a c++/c program or any other language that produces binaries 
+     	 - supports make cmake automake
+     (b) a debian package revolving around a c/c++ binary that can be checked on linked 
+     	 libraries so dependencies can be tracked fast and easy.
+
+To find out what packages you depend on just do
+     debiandependend.sh $binary
+and get a small list of all packages its linked agains and which version is installed as a minimum version.
+See packages.txt as an examble list.

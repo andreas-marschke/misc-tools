@@ -1,0 +1,77 @@
+begin moovida
+      begin
+        prog = irxevent
+	button = Power
+	config = Key ctrl-q CurrentWindow
+      end
+      begin
+        prog = irxevent
+	button = Left
+	config = Key Left CurrentWindow
+      end
+      begin
+        prog = irxevent
+	button = Right
+	config = Key Right CurrentWindow
+      end
+      begin
+        prog = irxevent
+	button = Up
+	config = Key Up CurrentWindow
+      end
+      begin
+        prog = irxevent
+	button = Down
+	config = Key Down CurrentWindow
+      end
+      begin
+        prog = irxevent
+	button = Back/Exit
+	config = Key BackSpace CurrentWindow
+      end
+      begin
+        prog = irxevent
+	button = OK
+	config = Key Return CurrentWindow
+      end
+      begin
+        prog = irxevent
+	button = Rewind
+	config = Key v CurrentWindow
+      end
+      begin
+        prog = irxevent
+	button = Forward
+	config = Key b CurrentWindow
+      end
+      begin
+        prog = irxevent
+	button = Vol+
+	config = Key Up CurrentWindow
+      end
+      begin
+        prog = irxevent
+	button = Vol-
+	config = Key Down CurrentWindow
+      end       
+      begin
+        prog = irxevent
+	button = Play
+	config = Key Return CurrentWindow
+      end     
+      begin
+        prog = irxevent
+	button = Pause
+	config = Key Return CurrentWindow
+      end
+      begin
+        prog = irxevent
+	button = Replay/SkipBackward
+	config = Key x CurrentWindow
+      end
+      begin
+        prog = irxevent
+	button = SkipForward
+	config = Key c CurrentWindow
+      end
+end moovida

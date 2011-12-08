@@ -1,0 +1,79 @@
+begin vlc
+      begin
+        prog = irxevent
+	button = Power
+	config = Key ctrl-q CurrentWindow
+      end
+      begin
+        prog = irxevent
+	button = Back/Exit
+	mode = ""
+      end
+      begin
+	prog = irxevent
+	button = Mute
+	config = Key m CurrentWindow
+      end
+      begin 
+      	prog = irxevent	
+  	button = Vol+
+	config = Key ctrl-Up CurrentWindow
+      end 
+      begin 
+	prog = irxevent
+	button = Vol-
+	config = Key ctrl-Down CurrentWindow
+      end 
+      begin 
+	prog = irxevent
+	button = Pause
+	config = Key space CurrentWindow
+      end 
+      begin 
+	prog = irxevent
+	button = Play
+	config = Key space CurrentWindow
+      end 
+      begin 
+	prog = irxevent
+	button = Go
+	config = Key f CurrentWindow
+      end 
+      begin 
+	prog = irxevent
+	button = Back/Exit
+	config = Key f CurrentWindow
+      end 
+      begin 
+	prog = irxevent
+	button = Ch+
+	config = Key n CurrentWindow
+      end 
+      begin 
+	prog = irxevent
+	button = Ch-
+	config = Key p CurrentWindow
+      end 
+
+      begin 
+	prog = irxevent
+	button = SkipForward
+	config = Key n CurrentWindow
+      end 
+      begin 
+	prog = irxevent
+	button = Replay/SkipBackward
+	config = Key p CurrentWindow
+      end 
+
+      begin 
+	prog = irxevent
+	button = Forward
+	config = Key ctrl-Right CurrentWindow
+      end 
+      begin 
+	prog = irxevent
+	button = Rewind
+	config = Key ctrl-Left CurrentWindow
+      end 
+end vlc

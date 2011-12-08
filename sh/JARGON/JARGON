@@ -1,0 +1,7 @@
+#!/bin/bash 
+#!/bin/bash 
+
+wget http://www.jargon.net/ -O- 2>/dev/null | \
+    grep '<A HREF="/jargonfile/[a-z]/[a-zA-Z0-9]*.html">[a-zA-Z0-9]*</A>' | \
+    sed 's:\(<[a-zA-Z0-9]*>\|</[a-zA-Z0-9]*>\|<A HREF="/[a-zA-Z0-9]*/[a-z]/[a-zA-Z0-9]*\.html">\|<[a-z]*>\|</[a-z]*>\)::g' | \
+    sed s/\ \ */\ /g 

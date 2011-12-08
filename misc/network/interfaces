@@ -1,0 +1,41 @@
+################################################################################
+# THIS IS NOT A VALID CONF THESE ARE EXAMPLES
+################################################################################
+# iface eth0 inet static 
+#       address 192.168.0.202
+#       netmask 255.255.255.0
+#       network 192.168.0.0
+#       gateway 192.168.0.200
+      
+# The primary network interface for the printer space
+# allow-hotplug eth0
+# iface eth0:0 inet dhcp
+#       netmask 255.255.255.0
+      
+# allow-hotplug eth1
+# iface eth1 inet static
+#         address 192.168.0.200
+#         netmask 255.255.255.0
+#         network 192.168.0.0
+#         post-up iptables -A POSTROUTING -t nat -j MASQUERADE -s 192.168.0.0/24
+#         post-up echo 1 > /proc/sys/net/ipv4/ip_forward
+#         post-up iptables -P FORWARD ACCEPT
+
+# allow-hotplug eth2
+# iface eth2 inet static
+#         address 192.168.0.200
+#         netmask 255.255.255.0
+#         network 192.168.0.0
+#         post-up iptables -A POSTROUTING -t nat -j MASQUERADE -s 192.168.0.0/24
+#         post-up echo 1 > /proc/sys/net/ipv4/ip_forward
+#         post-up iptables -P FORWARD ACCEPT
+
+# iface usb0 inet dhcp
+# allow-hotplug usb0
+# iface usb0 inet static
+#         address 192.168.1.202
+#         netmask 255.255.255.0
+#         network 192.168.1.0
+#         post-up iptables -A POSTROUTING -t nat -j MASQUERADE -s 192.168.1.0/24
+#         post-up echo 1 > /proc/sys/net/ipv4/ip_forward
+#         post-up iptables -P FORWARD ACCEPT

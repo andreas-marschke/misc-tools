@@ -1,0 +1,3 @@
+;; öffnet den einkommenden UDP Port 49000 
+
+iptables -I INPUT -p UDP -m udp --destination-port 49000 -j ACCEPT

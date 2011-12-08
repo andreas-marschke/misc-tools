@@ -1,0 +1,11 @@
+This is an example on writing HID files for bluetooth
+enabled devices that are capable of HID keyboard input 
+such as SonyEricsson k800i or earlier k7xx series mobile
+phones from SonyEricsson.
+
+*.hid files basically consist of a tar archive with a
+XML-based *.kcf file defining the keyboard codes sent 
+to the bluetooth reciever and the buttons that trigger the 
+keyboard events. 
+Additionally to help the user along it contains a png which
+is displayed to the user during the remote control process.
