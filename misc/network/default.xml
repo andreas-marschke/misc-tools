@@ -1,0 +1,18 @@
+<!-- 
+
+NOTE: This is an example I have running on my libvirt on my laptop plus atftpd providing the files
+
+-->
+<network>
+  <name>default</name>
+  <bridge name="virbr0" stp="off" delay="0" />
+  <domain name="andreas-marschke.name" />
+  <forward mode="nat" />
+  <ip address="192.168.122.1" netmask="255.255.255.0">
+    <tftp root="/srv/tftp/" />
+    <dhcp>
+      <range start="192.168.122.2" end="192.168.122.254" />
+      <bootp file="pxelinux.0" server="192.168.122.1" />
+    </dhcp>
+  </ip>
+</network>
