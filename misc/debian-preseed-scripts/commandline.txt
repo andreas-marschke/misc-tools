@@ -1,0 +1,3 @@
+This or an edited version of this should be set as the commandline for the debian installer kernel at boot time
+/install.amd/vmlinuz auto=true auto url=http://192.168.122.1/server-base.cfg priority=critical noshell DEBIAN_FRONTEND= preseed/url=http://192.168.122.1/server-base.cfg vga=788 initrd=/install.amd/initrd.gz -- quiet
+
