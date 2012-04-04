@@ -1,0 +1,16 @@
+# CentOS-CR.repo
+#
+# The continuous release  ( CR ) repository contains rpms from the
+# next point release of CentOS, which isnt itself released as yet.
+#
+# Look at http://wiki.centos.org/AdditionalResources/Repositories/CR
+# for more details about how this repository works and what users
+# should expect to see included / excluded
+
+[cr]
+name=CentOS-$releasever - CR
+baseurl=http://mirror.centos.org/centos/$releasever/cr/$basearch/
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+priority=1

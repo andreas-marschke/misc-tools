@@ -1,0 +1,21 @@
+default grml32
+implicit     0
+display      boot.msg
+prompt       1
+timeout      100
+ontimeout    localboot
+F1	boot.msg
+
+LABEL centos6
+        MENU LABEL CENTOS6 64 bit (Minimal Installation)
+        kernel centos6/vmlinuz
+        append initrd=centos6/initrd.img ks=http://192.168.254.1/centos.ks
+
+LABEL debian
+	MENU LABEL DEBIAN AMD64 (Debian Testing)
+	kernel debian/linux
+	append auto=true  auto url=http://192.168.254.1/server-base.cfg  priority=critical noshell DEBIAN_FRONTEND=noninteractive preseed/url=http://192.168.254.1/server-base.cfg  vga=788 initrd=debian/initrd.gz -- quiet 
+
+LABEL localboot
+	MENU LABEL LOCALBOOT
+	localboot 0
