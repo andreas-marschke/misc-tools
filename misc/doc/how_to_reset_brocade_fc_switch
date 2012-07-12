@@ -1,0 +1,11 @@
+This is a list of instructions to type into a brocade switch ( FOS 5.xx or
+newer ) in order to reset the configuration of the switch as documented in
+the brocade forums
+==========================================================================
+agtcfgdefault
+cfgdisable
+cfgclear 
+cfgsave 
+switchdisable
+configdefault
+fwsettodefault 
