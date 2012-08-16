@@ -29,6 +29,7 @@ use Text::TabularDisplay;
 use Getopt::Long;
 use Data::Dumper;
 use Pod::Usage;
+use File::Slurp;
 use DBI;
 
 our $VERSION = '0.1';
@@ -37,10 +38,12 @@ my ($path,   # path to the csv data
     $dbh,    # db handler
     $sth,    # statement handler
     $notbl,  # ifdef no tabular display
-    $delim   # delimiter on output works only with notbl
+    $delim,  # delimiter on output works only with notbl
+    $file
    );
 
 my $result = GetOptions (
+  "f|file=s"         => \$file,
   "n|notbl"          => \$notbl,
   "p|path=s"         => \$path,
   "q|query=s"        => \$query,
@@ -48,6 +51,10 @@ my $result = GetOptions (
   "h|help"           => sub { pod2usage(-exitval   => 0,
 					-verbose   => 99,
 					-noperldoc => 1) });
+
+$query = read_file($file) if ( defined $file && -f $file );
+chomp($query)
+;
 die "ERROR: No such directory $path" if ( ! -d $path );
 
 $delim = "," unless defined $delim;
@@ -74,8 +81,8 @@ if ($sth->{NUM_OF_FIELDS} gt 0 ) {
  } else {
    my $t = Text::TabularDisplay->new();
    my $row = $sth->fetchrow_hashref;
-   $t->columns(keys $row);
-   $t->add(values $row);
+   $t->columns(reverse(keys $row));
+   $t->add(reverse(values $row));
    while (my @row = $sth->fetchrow) {
      $t->add(@row);
    }
