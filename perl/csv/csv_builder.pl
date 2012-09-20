@@ -17,6 +17,26 @@ csv_builder -p ./csv -q "select * from mytable;"
 Runs queries against a local database of csv files in a directory.
 Each table is one csv file.
 
+=head2 -n --notbl 
+
+Be terse and don't print an ascii table for the results of SELECTs/UPDATEs.
+
+=head2 -p --path [PATH]
+
+The path to a directory containing multiple *.csv files. This directory is then handled
+like a database. The *.csv files are the tables.
+
+=head2 -q --query [STRING] 
+
+The SQL Query you would like to execute.
+
+=head2 -d --delim [CHAR]
+
+CHAR is the cell delimiter of your csv files.
+
+=head2 -h --help
+Show this help
+
 =cut
 
 use 5.010_000;
@@ -63,7 +83,7 @@ $dbh = DBI->connect ("dbi:CSV:",undef, undef,
 		      f_ext        => ".csv/r",
 		      f_encoding   => "utf8",
 		      csv_eol      => "\r\n",
-		      csv_sep_char => ",",
+		      csv_sep_char => $delim,
 		      RaiseError   => 1,
 		      PrintError   => 1,
 		     }) or die "$DBI::errstr";
