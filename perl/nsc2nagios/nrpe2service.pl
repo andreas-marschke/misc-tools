@@ -2,11 +2,11 @@
 
 =head1 NAME
 
-nsc2service - turn NSC.ini files into nagios checks
+nrpe2service - turn NSC.ini files into nagios checks
 
 =head1 SYNOPSIS
 
- nsc2service --nsc NSC.ini --template service.tpl 
+ nrpe2service --nsc NSC.ini --template service.tpl 
 
 =head1 DESCRIPTION
 
@@ -44,7 +44,7 @@ These are the options you can use.
 
 Shows this help
               
-=head2 -n --nsc NSC
+=head2 -n --nrpe NSC
 
 The NSCliet file from which checks are created 
 
@@ -66,6 +66,8 @@ Writes the created service-checks into the OUTPUT-file. You can specify
 STDOUT if you want to  print to the terminal. If not specified prints to STDOUT
 
 =cut
+
+
 
 our $VERSION = '0.001';
 
@@ -91,7 +93,7 @@ my $result = GetOptions (
   "h|help"           => sub { pod2usage( -exitval   => 0,
 		     			 -verbose   => 99,
 					 -noperldoc => 1 ) },
-  "n|nsc=s"          => \$nsc,
+  "n|nrpe=s"          => \$nsc,
   "t|template=s"     => \$template,
   "H|hosttemplate=s" => \$host_tpl,
   "host=s"           => \$host,
@@ -101,11 +103,17 @@ $host = "localhost" unless defined $host;
 
 my $content_template = read_file ( $template );
 my $content_host_template = read_file ( $host_tpl );
-my $nsc_content = Config::INI::Reader->read_file( $nsc );
+my @nsc_content = read_file($nsc);
 
-my $aliases = $nsc_content->{'External Alias'};
+my @aliases = grep m/^command\[[\w_]*\]=/,@nsc_content;
+my @new_aliases;
+foreach (@aliases) {
+  if (m/^command\[([\w\_]*)\]=/) {
+	push @new_aliases,$1;
+  }
+}
 
-foreach my $check ( keys %{$aliases}) {
+foreach my $check ( @new_aliases) {
   my $template = $content_template;
   $template =~ s/\$CHECK\$/${check}/;
   $template =~ s/\$DESC\$/${check}/;
@@ -113,7 +121,7 @@ foreach my $check ( keys %{$aliases}) {
   $content_host_template .= $template."\n";
 }
 
-if ( $output =~ m/STDOUT/ or !defined $output) {
+if ( !defined $output) {
   print $content_host_template;
 } else {
   my $file = $output; 
