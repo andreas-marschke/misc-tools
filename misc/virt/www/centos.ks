@@ -8,7 +8,7 @@ lang en_US.UTF-8
 keyboard de-latin1-nodeadkeys
 network --device eth0 --bootproto dhcp
 # Your root password
-rootpw 2kimpler96 
+rootpw test1234 
 firewall --enabled --ssh
 firstboot --disable
 authconfig --enableshadow --enablemd5
@@ -95,7 +95,7 @@ echo "Adding vimrc"
 echo -e "syntax on\nhighlight Comment ctermfg=Cyan\nset ts=4" > /root/.vimrc
 echo -e '#higher conntrack\noptions ip_conntrack hashsize=32768\n' >> /etc/modprobe.conf
 
-rpm -U http://download.fedora.redhat.com/pub/epel/6/x86_64/epel-release-6-5.noarch.rpm
+rpm -U http://ftp-stud.hs-esslingen.de/pub/epel/6/i386/epel-release-6-7.noarch.rpm
 yum -y install yum-priorities centos-release-cr
 
 wget -q -O /tmp/config.tar http://192.168.254.1/config/config6.tar
