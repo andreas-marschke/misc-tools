@@ -1,0 +1,4 @@
+// debian pool (default):
+Package: *
+Pin: release o=Debian
+Pin-Priority: 996

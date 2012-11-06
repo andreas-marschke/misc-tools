@@ -1,0 +1,30 @@
+APT
+{
+  NeverAutoRemove
+  {
+	"^firmware-linux.*";
+	"^linux-firmware$";
+	"^linux-image.*";
+	"^kfreebsd-image.*";
+	"^linux-restricted-modules.*";
+	"^linux-ubuntu-modules-.*";
+	"^gnumach$";
+	"^gnumach-image.*";
+  };
+
+  Never-MarkAuto-Sections
+  {
+	"metapackages";
+	"restricted/metapackages";
+	"universe/metapackages";
+	"multiverse/metapackages";
+	"oldlibs";
+	"restricted/oldlibs";
+	"universe/oldlibs";
+	"multiverse/oldlibs";
+  };
+};
+
+// Don't install suggestions or recommendations
+APT::Install-Recommends "0";
+APT::Install-Suggests "0";

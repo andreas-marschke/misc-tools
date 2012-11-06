@@ -1,0 +1,6 @@
+// Only Clean my package cache once in a while 
+// Don't install anything without me knowing it
+APT::Periodic::Enable "1";
+APT::Periodic::Update-Package-Lists "0";
+APT::Periodic::Download-Upgradeable-Packages "0";
+APT::Periodic::AutocleanInterval "1";

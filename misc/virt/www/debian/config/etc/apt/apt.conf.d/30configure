@@ -1,0 +1,7 @@
+// Don't configure packages that don't need to be configured unless they are
+// Pre-Depends on another package
+DPkg::NoTriggers "true";
+PackageManager::Configure "smart";
+DPkg::ConfigurePending "true";
+DPkg::TriggersPending "true";
+			   

@@ -1,0 +1,2 @@
+# Uncomment to start SNMP subagent and enable CDP, SONMP and EDP protocol
+DAEMON_ARGS="-c -s -e -f -l"

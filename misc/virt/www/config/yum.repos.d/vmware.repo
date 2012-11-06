@@ -1,6 +1,0 @@
-[vmware]
-name=Vmware Tools
-baseurl=http://packages.vmware.com/tools/esx/4.1u1/rhel6/$basearch
-gpgcheck=0
-enabled=1
-priority=20

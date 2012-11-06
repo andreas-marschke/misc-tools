@@ -98,14 +98,17 @@ echo -e '#higher conntrack\noptions ip_conntrack hashsize=32768\n' >> /etc/modpr
 rpm -U http://ftp-stud.hs-esslingen.de/pub/epel/6/i386/epel-release-6-7.noarch.rpm
 yum -y install yum-priorities centos-release-cr
 
-wget -q -O /tmp/config.tar http://192.168.254.1/config/config6.tar
+wget -q -O /tmp/config.tar http://10.0.0.1/centos/config/centos.tar
+
 
 yum -y install exim
 yum -y remove postfix
 chkconfig exim on
 tar -C /etc -xf /tmp/config.tar
 
+ulimit -n 8192
 yum -y update
+
 chkconfig ntp on
 
 ) 2>&1 | tee /root/ks-post.log

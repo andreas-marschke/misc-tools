@@ -1,0 +1,2 @@
+deb http://http.debian.net/debian testing main contrib non-free
+deb-src http://http.debian.net/debian testing main contrib non-free
