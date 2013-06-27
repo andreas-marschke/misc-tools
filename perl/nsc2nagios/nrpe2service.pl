@@ -81,7 +81,6 @@ use Getopt::Long;
 use IO::File;
 use Pod::Usage;
 use File::Slurp;
-use Config::INI::Reader;
 
 my ($output,
     $host,
