@@ -1,0 +1,176 @@
+#!/usr/bin/perl
+
+=pod
+
+=head1 NAME
+
+id3rename - rename audiofiles based on id3-tags
+
+=head1 SYNOPSIS
+
+ # test prior to renaming
+ id3rename --test --pattern "{track} - {title}" *.flac
+
+ # rename files in place
+ id3rename --pattern "{track} - {title}" *.flac
+
+ # rename files and move to another desination
+ id3rename --pattern "{track} - {title}" --destination "~/Music/{artist}/{album}" *.flac
+
+
+=head1 DESCRIPTION
+
+=head2 OPTIONS
+
+=head3 --width -w
+
+Add zero padding to numeric pattern variables
+
+=head3 --test -t
+
+Only print destination files do not do anything
+
+=head3 --pattern "STRING" -p "STRING"
+
+Pattern to rename files according to id3 tagging by. See L<PATTERNS|/PATTERNS> for more information
+
+=head3 --destination "STRING" -d "STRING"
+
+Directory to move new files to. If the directory path does not exist, the path will be created. Patterns work just as well here.
+
+=head2 PATTERNS
+
+Patterns
+
+Supported Pattern variables:
+
+=over 1
+
+=item "title"
+
+The title of the track
+
+=item "track"
+
+The tracknumber as defined by L<track0()|MP3::Tag/disk1()>
+
+=item "artist"
+
+Artist as tagged
+
+=item "album"
+
+Album as tagged
+
+=item "comment"
+
+Any comments written in the IDv2/IDv1
+
+=item "year"
+
+Year of release
+
+=item "genre"
+
+Genre of the audiofile
+
+=item "disk"
+
+Disc number as per L<disc1()|MP3::Tag/disk1()>  (see L<MP3::Tag>)
+
+=back
+
+=cut
+
+use 5.010_000;
+
+use strict;
+use warnings;
+
+use Data::Dumper;
+use Getopt::Long;
+use Pod::Usage;
+use MP3::Tag;
+use File::Basename;
+use File::Path;
+
+our $VERSION = '0.1';
+
+my ($pattern,$test,$destination,$width);
+
+my $result = GetOptions (
+  "d|destination=s" => \$destination,
+  "p|pattern=s"     => \$pattern,
+  "t|test"          => \$test,
+  "w|width"         => \$width,
+  "h|help"          => sub { pod2usage(-exitval   => 0,
+				       -verbose   => 99,
+				       -noperldoc => 1) });
+
+my @filelist;
+
+if (scalar @ARGV => 1) {
+  foreach my $file (@ARGV) {
+
+    if ( -e $file ) {
+      push @filelist,$file;
+    } else {
+      print "ERROR: File \"$file\" not found!\n";
+    }
+  }
+}
+
+if (scalar @filelist == 0) {
+  die "No files to change. Exiting...\n"
+}
+
+foreach my $file (@filelist) {
+  my $audio = MP3::Tag->new($file);
+  my ($title, $track, $artist, $album, $comment, $year, $genre) = $audio->autoinfo();
+  my %tags = (
+    "title" => $title,
+    "track" => $track,
+    "artist" => $artist,
+    "album" => $album,
+    "comment" => $comment,
+    "year" => $year,
+    "genre" => $genre
+   );
+
+  $tags{disk} = $audio->disk1();
+
+  my $pattern_to_file = $pattern;
+
+  if ($pattern_to_file =~ m/\{track\}/) {
+    my $track;
+    if ($width) {
+      $track = $audio->track0();
+    } else {
+      $track = $audio->track1();
+    }
+    $pattern_to_file =~ s/\{track\}/$track/g;
+  }
+
+  foreach my $tag (keys %tags) {
+    $pattern_to_file =~ s/\{$tag\}/$tags{$tag}/g;
+  }
+  $pattern_to_file = $pattern_to_file.$audio->filename_extension();
+
+  if (!defined $destination) {
+    $destination = dirname ($file);
+  } else {
+    if ($destination =~ m/(\{|\})/) {
+      foreach my $tag (keys %tags) {
+	$destination =~ s/\{$tag\}/$tags{$tag}/g;
+      }
+    }
+  }
+
+  print $destination."/".$pattern_to_file."\n";
+  if (!$test) {
+    if ( ! -d $destination ) {
+      mkpath $destination;
+    }
+    rename $file,$destination."/".$pattern_to_file;
+  }
+}
